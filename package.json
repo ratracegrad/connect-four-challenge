@@ -1,0 +1,31 @@
+{
+  "name": "spa-angular",
+  "author": "Jennifer Bland <ratracegrad@gmail.com>",
+  "version": "1.0.0",
+  "description": "single page appliation using Node.js and Angular",
+  "main": "server.js",
+  "keywords": [
+    "connect four",
+    "angularJS",
+    "mongoDB",
+    "mongoose",
+    "Jennifer Bland"
+  ],
+  "bugs": {
+    "url": "https://github.com/mohitvirli/angular-gulp-seed/issues"
+  },
+  "homepage": "https://github.com/mohitvirli/angular-gulp-seed#readme",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "bower": "^1.8.0",
+    "express": "^4.15.2",
+    "method-override": "^2.3.8",
+    "mongoose": "^4.9.9",
+    "morgan": "^1.8.1"
+  }
+}
