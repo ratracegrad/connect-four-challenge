@@ -1,5 +1,5 @@
 {
-  "name": "spa-angular",
+  "name": "connect-four",
   "author": "Jennifer Bland <ratracegrad@gmail.com>",
   "version": "1.0.0",
   "description": "single page appliation using Node.js and Angular",
@@ -12,9 +12,9 @@
     "Jennifer Bland"
   ],
   "bugs": {
-    "url": "https://github.com/mohitvirli/angular-gulp-seed/issues"
+    "url": "https://github.com/ratracegrad/connect-four-challenge/issues"
   },
-  "homepage": "https://github.com/mohitvirli/angular-gulp-seed#readme",
+  "homepage": "https://github.com/ratracegrad/connect-four-challenge#readme",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server"
@@ -25,7 +25,6 @@
     "bower": "^1.8.0",
     "express": "^4.15.2",
     "method-override": "^2.3.8",
-    "mongoose": "^4.9.9",
     "morgan": "^1.8.1"
   }
 }
