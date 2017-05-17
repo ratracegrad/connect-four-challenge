@@ -2,6 +2,11 @@ const controllerFunc = function($scope) {
   $scope.formData = {};
   $scope.showGame = false;
   $scope.modalShown = false;
+  $scope.game = {
+    r76: 0
+  }
+
+
 
   $scope.toggleModal = function() {
     $scope.modalShown = !$scope.modalShown;
@@ -11,6 +16,10 @@ const controllerFunc = function($scope) {
     $scope.showGame = !$scope.showGame;
   }
 
+  $scope.dropChip = function(btn) {
+    console.log(btn);
+    $scope.game.r76 = 1;
+  }
 };
 const directiveFunc = function() {
   return {
