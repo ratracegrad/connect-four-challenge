@@ -1,0 +1,30 @@
+{
+  "name": "spa-angular",
+  "description": "single page appliation using Node.js and Angular",
+  "main": "server.js",
+  "authors": [
+    "Jennifer Bland <ratracegrad@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "connect",
+    "four",
+    "angularJS",
+    "mongoDB",
+    "mongoose",
+    "Jennifer",
+    "Bland"
+  ],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "angular": "^1.6.4"
+  }
+}
