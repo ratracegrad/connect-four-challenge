@@ -26,7 +26,7 @@
 
         <div id="gameboard" class="flexContainer" ng-if="showGame">
             <div class="flexColumn">
-                <button class="dropButton" id="b1">drop</button>
+                <button ng-click="dropChip('r1')" class="dropButton" id="b1">drop</button>
                 <div id="r11" class="slot"></div>
                 <div id="r12" class="slot"></div>
                 <div id="r13" class="slot"></div>
@@ -35,7 +35,7 @@
                 <div id="r16" class="slot"></div>
             </div>
             <div class="flexColumn">
-                <button class="dropButton" id="b2">drop</button>
+                <button ng-click="dropChip('r2')" class="dropButton" id="b2">drop</button>
                 <div id="r21" class="slot"></div>
                 <div id="r22" class="slot"></div>
                 <div id="r23" class="slot"></div>
@@ -44,7 +44,7 @@
                 <div id="r26" class="slot"></div>
             </div>
             <div class="flexColumn">
-                <button class="dropButton" id="b3">drop</button>
+                <button ng-click="dropChip('r1')" class="dropButton" id="b3">drop</button>
                 <div id="r31" class="slot"></div>
                 <div id="r32" class="slot"></div>
                 <div id="r33" class="slot"></div>
@@ -53,7 +53,7 @@
                 <div id="r36" class="slot"></div>
             </div>
             <div class="flexColumn">
-                <button class="dropButton" id="b4">drop</button>
+                <button ng-click="dropChip('r1')" class="dropButton" id="b4">drop</button>
                 <div id="r41" class="slot"></div>
                 <div id="r42" class="slot"></div>
                 <div id="r43" class="slot"></div>
@@ -62,7 +62,7 @@
                 <div id="r46" class="slot"></div>
             </div>
             <div class="flexColumn">
-                <button class="dropButton" id="b5">drop</button>
+                <button ng-click="dropChip('r1')" class="dropButton" id="b5">drop</button>
                 <div id="r51" class="slot"></div>
                 <div id="r52" class="slot"></div>
                 <div id="r53" class="slot"></div>
@@ -71,7 +71,7 @@
                 <div id="r56" class="slot"></div>
             </div>
             <div class="flexColumn">
-                <button class="dropButton" id="b6">drop</button>
+                <button ng-click="dropChip('r1')" class="dropButton" id="b6">drop</button>
                 <div id="r61" class="slot"></div>
                 <div id="r62" class="slot"></div>
                 <div id="r63" class="slot"></div>
@@ -80,13 +80,13 @@
                 <div id="r66" class="slot"></div>
             </div>
             <div class="flexColumn">
-                <button class="dropButton" id="b7">drop</button>
+                <button ng-click="dropChip('r1')" class="dropButton" id="b7">drop</button>
                 <div id="r71" class="slot"></div>
                 <div id="r72" class="slot"></div>
                 <div id="r73" class="slot"></div>
                 <div id="r74" class="slot"></div>
                 <div id="r75" class="slot"></div>
-                <div id="r76" class="slot"></div>
+                <div id="r76" ng-class="{'slot' : game.r76==0, 'player1' : game.r76==1, 'player2' : game.r76==2}"></div>
             </div>
         </div>
 
@@ -116,7 +116,6 @@
         <!-- add scripts -->
         <script src="vendor/angular/angular.min.js"></script>
         <script src="app/app.js"></script>
-
     </body>
 
 </html>
