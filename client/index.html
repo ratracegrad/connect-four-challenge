@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html ng-app="app">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Connect Four game created by Jennifer Bland">
+        <title>Connect Four | Jennifer Bland</title>
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link rel="stylesheet" href="vendor/normalize-css/normalize.css">
+        <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="app/app.css">
+    </head>
+
+    <body ng-controller="mainController">
+        <div class="flexContainer">
+            <div class="gameTitle">
+                Connect Four
+            </div>
+        </div>
+        <div class="flexContainer">
+            <div>
+                <button ng-click='startGame()' ng-show="!showGame" class="gameButton">Start Game</button>
+                <button ng-click='toggleModal()' class="gameButton">Instructions</button>
+            </div>
+        </div>
+
+        <div id="gameboard" class="flexContainer" ng-if="showGame">
+            <div class="flexColumn">
+                <button class="dropButton" id="b1">drop</button>
+                <div id="r11" class="slot"></div>
+                <div id="r12" class="slot"></div>
+                <div id="r13" class="slot"></div>
+                <div id="r14" class="slot"></div>
+                <div id="r15" class="slot"></div>
+                <div id="r16" class="slot"></div>
+            </div>
+            <div class="flexColumn">
+                <button class="dropButton" id="b2">drop</button>
+                <div id="r21" class="slot"></div>
+                <div id="r22" class="slot"></div>
+                <div id="r23" class="slot"></div>
+                <div id="r24" class="slot"></div>
+                <div id="r25" class="slot"></div>
+                <div id="r26" class="slot"></div>
+            </div>
+            <div class="flexColumn">
+                <button class="dropButton" id="b3">drop</button>
+                <div id="r31" class="slot"></div>
+                <div id="r32" class="slot"></div>
+                <div id="r33" class="slot"></div>
+                <div id="r34" class="slot"></div>
+                <div id="r35" class="slot"></div>
+                <div id="r36" class="slot"></div>
+            </div>
+            <div class="flexColumn">
+                <button class="dropButton" id="b4">drop</button>
+                <div id="r41" class="slot"></div>
+                <div id="r42" class="slot"></div>
+                <div id="r43" class="slot"></div>
+                <div id="r44" class="slot"></div>
+                <div id="r45" class="slot"></div>
+                <div id="r46" class="slot"></div>
+            </div>
+            <div class="flexColumn">
+                <button class="dropButton" id="b5">drop</button>
+                <div id="r51" class="slot"></div>
+                <div id="r52" class="slot"></div>
+                <div id="r53" class="slot"></div>
+                <div id="r54" class="slot"></div>
+                <div id="r55" class="slot"></div>
+                <div id="r56" class="slot"></div>
+            </div>
+            <div class="flexColumn">
+                <button class="dropButton" id="b6">drop</button>
+                <div id="r61" class="slot"></div>
+                <div id="r62" class="slot"></div>
+                <div id="r63" class="slot"></div>
+                <div id="r64" class="slot"></div>
+                <div id="r65" class="slot"></div>
+                <div id="r66" class="slot"></div>
+            </div>
+            <div class="flexColumn">
+                <button class="dropButton" id="b7">drop</button>
+                <div id="r71" class="slot"></div>
+                <div id="r72" class="slot"></div>
+                <div id="r73" class="slot"></div>
+                <div id="r74" class="slot"></div>
+                <div id="r75" class="slot"></div>
+                <div id="r76" class="slot"></div>
+            </div>
+        </div>
+
+        <!-- modal code below -->
+        <modal-dialog show='modalShown' width='50%' height='70%'>
+            <div class="flexContainer">
+                <h1>Connect Four Game Rules</h1>
+            </div>
+            <div>
+                <h3>Object:</h3>
+                <p>To win Connect Four you must be the first player to get four of your colored checkers in a row either horizontally, vertically or diagonally.</p>
+            </div>
+            <div>
+                <h3>How to Play:</h3>
+                <p>
+                    <ol>
+                        <li>Decide who plays first. Players will alternate turns after playing a checker.</li>
+                        <li>On your turn, drop one of your checkers down ANY of the slots in the grid by clicking on the grid.</li>
+                        <li>Play alternates until one player gets 4 checkers of his/her color in a row. The 4-in-a-row can be horizontal, vertical or diagonal.</li>
+                        <li>If you're the first player to get four of the checkers in a row, you win the game.</li>
+                    </ol>
+                </p>
+            </div>
+
+        </modal-dialog>
+
+        <!-- add scripts -->
+        <script src="vendor/angular/angular.min.js"></script>
+        <script src="app/app.js"></script>
+
+    </body>
+
+</html>
