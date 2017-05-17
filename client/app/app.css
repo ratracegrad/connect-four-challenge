@@ -1,0 +1,178 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #fff3cd;
+}
+
+/* -------------------
+ *    Flex Items
+ * ------------------*/
+.flexContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center
+}
+
+.flexColumn {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center
+}
+
+/* -----------------------
+ * Game Title and Board
+ * -----------------------*/
+.gameTitle {
+    font-size: 72px;
+    text-align: center;
+    font-weight: 700;
+    text-shadow:
+        0 3px 0 #b2a98f,
+        0 14px 10px rgba(0,0,0,0.15),
+        0 24px 2px rgba(0,0,0,0.1),
+        0 34px 30px rgba(0,0,0,0.1);
+    color: #005dab;
+}
+
+.slot {
+    width: 90px;
+    height: 90px;
+    margin: 0 10px 10px 0;
+    border: 1px solid black;
+    border-radius: 8px;
+    box-shadow: 6px 6px 0 rgba(0,0,0,0.2);
+}
+.slot:last-child {
+    margin-right: 0;
+}
+
+/* ---------------------
+ *    Buttons
+ * ---------------------*/
+.gameButton {
+    color: #fff;
+    text-align: center;
+    margin: 5px 0;
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background: #425967 none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+.dropButton {
+    background-color: #005dab;
+    height: 45px;
+    width: 60px;
+    margin: 0 5px 5px 5px;
+    border: 2px solid white;
+    border-radius: 15px;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+}
+
+.dropButton:hover {
+    background-color: #4AA8F7;
+}
+
+/* ----------------------
+ *    Modal
+ * ----------------------*/
+.ng-modal-overlay {
+    position:absolute;
+    z-index:9999;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color:#000000;
+    opacity: 0.8;
+}
+.ng-modal-dialog {
+    z-index:10000;
+    position: absolute;
+    width: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    background-color: #fff;
+    box-shadow: 4px 4px 80px #000;
+    border-radius: 8px;
+}
+.ng-modal-dialog-content {
+    padding: 20px;
+}
+.ng-modal-close {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    padding: 5px;
+    cursor: pointer;
+    font-size: 120%;
+    display: inline-block;
+    font-weight: bold;
+    font-family: 'arial', 'sans-serif';
+}
+.ng-modal-dialog h1 {
+    text-shadow: 3px 3px 0px rgba(0,0,0,0.2);
+    color: #005dab;
+    font-weight: 700;
+}
+
+/* -----------------
+ *   media queries
+ * -----------------*/
+@media only screen and (min-width: 300px) {
+    .gameTitle {
+        font-size: 40px;
+        text-shadow:
+                0 3px 0 #b2a98f,
+                0 7px 10px rgba(0,0,0,0.15),
+                0 11px 2px rgba(0,0,0,0.1),
+                0 17px 30px rgba(0,0,0,0.1);
+    }
+
+    .slot {
+        width: 40px;
+        height: 40px;
+        margin: 0 5px 5px 0;
+    }
+}
+@media (min-width: 576px) {
+    .gameTitle {
+        font-size: 48px;
+    }
+
+    .slot {
+        width: 60px;
+        height: 60px;
+        margin: 0 10px 10px 0;
+    }
+}
+@media only screen and (min-width: 768px) {
+    .gameTitle {
+        font-size: 60px;
+    }
+
+    .slot {
+        width: 70px;
+        height: 70px;
+        margin: 0 10px 10px 0;
+    }
+}
