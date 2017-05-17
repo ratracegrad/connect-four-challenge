@@ -49,6 +49,20 @@ body {
 .slot:last-child {
     margin-right: 0;
 }
+.player1 {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: red;
+    margin: 0 10px 10px 0;
+}
+.player2 {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: green;
+    margin: 0 10px 10px 0;
+}
 
 /* ---------------------
  *    Buttons
