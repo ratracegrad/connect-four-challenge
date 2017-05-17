@@ -102,6 +102,22 @@ body {
 .dropButton:hover {
     background-color: #4AA8F7;
 }
+.disabled {
+    background-color: #005dab;
+    height: 45px;
+    width: 60px;
+    margin: 0 5px 5px 5px;
+    border: 2px solid white;
+    border-radius: 15px;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    cursor: not-allowed;
+    filter: alpha(opacity=65);
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    opacity: .65;
+}
 
 /* ----------------------
  *    Modal
