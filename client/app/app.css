@@ -2,9 +2,15 @@
     box-sizing: border-box;
 }
 
+html {
+    position: relative;
+    min-height: 100vh;
+}
+
 body {
     font-family: 'Roboto', sans-serif;
     background-color: #fff3cd;
+    margin-bottom: 50px;
 }
 
 /* -------------------
@@ -39,7 +45,7 @@ body {
 }
 
 #gameBoard {
-    margin-top: 25px;
+    margin-top: 15px;
 }
 
 .slot {
@@ -85,6 +91,25 @@ body {
     border-bottom: 2px solid #004F91;
     border-radius: 4px;
 }
+
+/* ---------------------
+ *         Footer
+ * ---------------------*/
+.footer {
+    background-color: #005dab;
+    height: 50px;
+    bottom: 0;
+    position: absolute;
+    height: 50px;
+    width: 100vw;
+}
+
+.footer span {
+    line-height: 50px;
+    color: #fefefe;
+    text-align: center;
+}
+
 
 /* ---------------------
  *    Animations
