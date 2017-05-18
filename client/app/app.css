@@ -38,6 +38,10 @@ body {
     color: #005dab;
 }
 
+#gameBoard {
+    margin-top: 25px;
+}
+
 .slot {
     width: 90px;
     height: 90px;
@@ -68,55 +72,18 @@ body {
  *    Buttons
  * ---------------------*/
 .gameButton {
-    color: #fff;
+    color: #f4f4f4;
     text-align: center;
-    margin: 5px 0;
-    display: inline-block;
-    padding: 6px 12px;
+    margin: 5px 5px;
+    padding: 10px 25px;
     font-size: 14px;
-    font-weight: 400;
+    font-weight: bold;
     line-height: 1.42857143;
-    vertical-align: middle;
-    touch-action: manipulation;
     cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    background: #425967 none;
-    border: 1px solid transparent;
+    background: #005dab;
+    border: solid 0 #e3edf4;
+    border-bottom: 2px solid #004F91;
     border-radius: 4px;
-}
-.dropButton {
-    background-color: #005dab;
-    height: 45px;
-    width: 60px;
-    margin: 0 5px 5px 5px;
-    border: 2px solid white;
-    border-radius: 15px;
-    color: white;
-    text-align: center;
-    font-size: 16px;
-}
-
-.dropButton:hover {
-    background-color: #4AA8F7;
-}
-.disabled {
-    background-color: #005dab;
-    height: 45px;
-    width: 60px;
-    margin: 0 5px 5px 5px;
-    border: 2px solid white;
-    border-radius: 15px;
-    color: white;
-    text-align: center;
-    font-size: 16px;
-    cursor: not-allowed;
-    filter: alpha(opacity=65);
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    opacity: .65;
 }
 
 /* ----------------------
@@ -160,7 +127,7 @@ body {
     font-family: 'arial', 'sans-serif';
 }
 .ng-modal-dialog h1 {
-    text-shadow: 3px 3px 0px rgba(0,0,0,0.2);
+    text-shadow: 3px 3px 0 rgba(0,0,0,0.2);
     color: #005dab;
     font-weight: 700;
 }
