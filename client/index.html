@@ -7,11 +7,12 @@
         <title>Connect Four | Jennifer Bland</title>
         <link rel="shortcut icon" href="app/assets/images/favicon.ico" type="image/x-icon">
 
-        <!-- use foot from Google Fonts-->
+        <!-- use font from Google Fonts-->
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
         <!-- stylesheets below - Added normalize to do a reset before my stylesheet -->
         <link rel="stylesheet" href="vendor/normalize-css/normalize.css">
+        <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="app/app.css">
     </head>
 
@@ -23,7 +24,8 @@
 
             <!-- Buttons to start game and show instructions-->
             <div>
-                <button ng-click='startGame()' ng-show="!showGame" class="gameButton">Start Game</button>
+                <button ng-click='startGame()' class="gameButton">Start Game</button>
+                <button ng-click="computerGame()" class="gameButton">Play Computer</button>
                 <button ng-click='toggleInstructionsModal()' class="gameButton">Instructions</button>
             </div>
         </div>
@@ -113,8 +115,9 @@
 
         <results-modal show="resultsModalShown">
             <div class="flexContainer">
-                <h1 ng-show="!getNumMoves()">Winner is {{ game.winner }}</h1>
+                <h1 ng-show="!getNumMoves() && (game.numMoves != 0)">Winner is {{ game.winner }}</h1>
                 <h1 ng-show="getNumMoves()">Tie Game!</h1>
+                <h1 ng-show="game.numMoves == 0">Player 1 Starts</h1>
             </div>
         </results-modal>
 

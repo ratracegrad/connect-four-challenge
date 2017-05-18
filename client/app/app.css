@@ -108,6 +108,22 @@ body {
     line-height: 50px;
     color: #fefefe;
     text-align: center;
+    margin-right: 20px;
+}
+
+.footer .fa {
+    color: #fefefe;
+    font-size: 28px;
+    margin: 0 5px;
+    line-height: 50px;
+}
+
+.sourceCode {
+    margin-left: 20px;
+}
+.sourceCode a {
+    color: #fefefe;
+    text-decoration: none;
 }
 
 

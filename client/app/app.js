@@ -5,6 +5,7 @@ const controllerFunc = ($scope) => {
   $scope.player1 = true; // used to determine who is current player
   $scope.instructionsModalShown = false; // should instructions modal be shown
   $scope.resultsModalShown = false;  // show results modal be shown
+  $scope.playComputer = false; // are we playing the computer
   $scope.game = {
     board: {
       'c11': 0, 'c12': 0, 'c13': 0, 'c14': 0, 'c15': 0, 'c16': 0,
@@ -55,7 +56,15 @@ const controllerFunc = ($scope) => {
       animate: {
         c1: false, c2: false, c3: false, c4: false, c5: false, c6: false, c7: false
       }
-    }
+    };
+    $scope.resultsModalShown = true;  // display notice that Player 1 starts game
+  };
+
+  /* start game against computer */
+  $scope.computerGame = () => {
+    $scope.playComputer = true;
+    $scope.startGame();
+
   };
 
   /* user plays chips so display it on the board */
@@ -89,6 +98,22 @@ const controllerFunc = ($scope) => {
 
     /* alternate between the two players */
     $scope.player1 = !$scope.player1;
+    if ($scope.playComputer && !$scope.player1) {
+      $scope.computerMove();
+    }
+  };
+
+  /* we are the computer so we make our move */
+  $scope.computerMove = () => {
+    $scope.dropChip($scope.randomCol());
+  };
+
+  $scope.randomCol = () => {
+    const col = Math.floor(Math.random() * 7) + 1;
+    if ($scope.game.nextSlot['c' + col] > 6) {
+      $scope.randomCol();
+    }
+    return 'c' + col;
   };
 
   /* used to determine what color chip is placed in the slot */
