@@ -15,54 +15,36 @@ const controllerFunc = function($scope) {
     },
     nextSlot: {
       c1: 1, c2: 1, c3: 1, c4: 1, c5: 1, c6: 1, c7: 1
-    }
+    },
+    numMoves: 0,
+    winner: null
   };
 
   /* controller functions  */
-  $scope.toggleModal = function() {
+  $scope.toggleInstructionsModal = () => {
     $scope.modalShown = !$scope.modalShown;
   };
 
-  $scope.startGame = function() {
+  $scope.startGame = () => {
     $scope.showGame = !$scope.showGame;
   };
 
-  $scope.dropChip = function(btn) {
-    console.log('btn', btn);
-    switch (btn) {
-      case 'c1':
-        $scope.game.board["c1"+$scope.game.nextSlot.c1] = ($scope.player1) ? 1 : 2;
-        $scope.game.nextSlot.c1 = ($scope.game.nextSlot.c1 + 1);
-        break;
-      case 'c2':
-        $scope.game.board["c2"+$scope.game.nextSlot.c2] = ($scope.player1) ? 1 : 2;
-        $scope.game.nextSlot.c2 = ($scope.game.nextSlot.c2 + 1);
-        break;
-      case 'c3':
-        $scope.game.board["c3"+$scope.game.nextSlot.c3] = ($scope.player1) ? 1 : 2;
-        $scope.game.nextSlot.c3 = ($scope.game.nextSlot.c3 + 1);
-        break;
-      case 'c4':
-        $scope.game.board["c4"+$scope.game.nextSlot.c4] = ($scope.player1) ? 1 : 2;
-        $scope.game.nextSlot.c4 = ($scope.game.nextSlot.c4 + 1);
-        break;
-      case 'c5':
-        $scope.game.board["c5"+$scope.game.nextSlot.c5] = ($scope.player1) ? 1 : 2;
-        $scope.game.nextSlot.c5 = ($scope.game.nextSlot.c5 + 1);
-        break;
-      case 'c6':
-        $scope.game.board["c6"+$scope.game.nextSlot.c6] = ($scope.player1) ? 1 : 2;
-        $scope.game.nextSlot.c6 = ($scope.game.nextSlot.c6 + 1);
-        break;
-      case 'c7':
-        $scope.game.board["c7"+$scope.game.nextSlot.c7] = ($scope.player1) ? 1 : 2;
-        $scope.game.nextSlot.c7 = ($scope.game.nextSlot.c7 + 1);
-        break;
+  $scope.dropChip = (btn) => {
+    $scope.game.numMoves++;
+    if ($scope.game.nextSlot[btn] === 7) {
+      // TODO play sound
+    } else {
+      $scope.game.board[btn+$scope.game.nextSlot[btn]] = ($scope.player1) ? 1 : 2;
+      $scope.game.nextSlot[btn] = ($scope.game.nextSlot[btn] + 1);
+      if ($scope.game.numMoves > 7 ) {
+        $scope.checkWinner(btn, $scope.player1);
+      }
     }
+
     $scope.player1 = !$scope.player1;
   };
 
-  $scope.getSlotClass = function(pos) {
+  $scope.getSlotClass = (pos) => {
     if ($scope.game.board[pos] === 0) {
       return 'slot';
     } else if ($scope.game.board[pos] === 1) {
@@ -70,11 +52,29 @@ const controllerFunc = function($scope) {
     } else {
       return 'player2';
     }
-  }
+  };
 
-  $scope.getBtnClass = function(pos) {
-    return ($scope.game.nextSlot[pos] >= 7) ? 'disabled' : 'dropButton';
-  }
+  $scope.checkWinner = (btn, player) => {
+    if ( $scope.checkHorizontal(btn, player) || $scope.checkVertical(btn, player) || $scope.checkDiagonal(btn, player) ) {
+      $scope.game.winner === ($scope.player1) ? 1 : 2;
+      return true;
+    }
+    return false;
+  };
+
+  $scope.checkHorizontal = (btn, player) => {
+
+    return false;
+  };
+
+  $scope.checkVertical = (btn, player) => {
+    return false;
+  };
+
+  $scope.checkDiagonal = (btn, player) => {
+    return false;
+  };
+
 
 };
 const directiveFunc = function() {
