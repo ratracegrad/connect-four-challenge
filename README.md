@@ -12,7 +12,7 @@ You can view the game in action [online here](https://salesloft-hireme.herokuapp
 
 ### Prerequisites
 
-You must have [Git](http://git-scm.com/) and node.js and its package manager [npm](http://nodejs.org/) installed.
+You must have [Git](http://git-scm.com/) and [node.js](https://nodejs.org/en/) and its package manager [npm](http://nodejs.org/) installed.
 
 ### Getting Started
 
