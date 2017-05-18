@@ -17,7 +17,8 @@
   "homepage": "https://github.com/ratracegrad/connect-four-challenge#readme",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server"
+    "start": "node server",
+    "postinstall": "bower install"
   },
   "license": "MIT",
   "dependencies": {
