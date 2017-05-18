@@ -20,13 +20,12 @@
         <div class="flexContainer">
             <div>
                 <button ng-click='startGame()' ng-show="!showGame" class="gameButton">Start Game</button>
-                <button ng-click='toggleModal()' class="gameButton">Instructions</button>
+                <button ng-click='toggleInstructionsModal()' class="gameButton">Instructions</button>
             </div>
         </div>
 
-        <div id="gameboard" class="flexContainer" ng-if="showGame">
-            <div class="flexColumn">
-                <button ng-click="dropChip('c1')" ng-class="getBtnClass('c1')">drop</button>
+        <div id="gameBoard" class="flexContainer" ng-if="showGame">
+            <div class="flexColumn" ng-click="dropChip('c1')">
                 <div id="c16" ng-class="getSlotClass('c16')"></div>
                 <div id="c15" ng-class="getSlotClass('c15')"></div>
                 <div id="c14" ng-class="getSlotClass('c14')"></div>
@@ -34,8 +33,7 @@
                 <div id="c12" ng-class="getSlotClass('c12')"></div>
                 <div id="c11" ng-class="getSlotClass('c11')"></div>
             </div>
-            <div class="flexColumn">
-                <button ng-click="dropChip('c2')" ng-class="getBtnClass('c2')">drop</button>
+            <div class="flexColumn" ng-click="dropChip('c2')">
                 <div id="c26" ng-class="getSlotClass('c26')"></div>
                 <div id="c25" ng-class="getSlotClass('c25')"></div>
                 <div id="c24" ng-class="getSlotClass('c24')"></div>
@@ -43,8 +41,7 @@
                 <div id="c22" ng-class="getSlotClass('c22')"></div>
                 <div id="c21" ng-class="getSlotClass('c21')"></div>
             </div>
-            <div class="flexColumn">
-                <button ng-click="dropChip('c3')" ng-class="getBtnClass('c3')">drop</button>
+            <div class="flexColumn" ng-click="dropChip('c3')">
                 <div id="c36" ng-class="getSlotClass('c36')"></div>
                 <div id="c35" ng-class="getSlotClass('c35')"></div>
                 <div id="c34" ng-class="getSlotClass('c34')"></div>
@@ -52,8 +49,7 @@
                 <div id="c32" ng-class="getSlotClass('c32')"></div>
                 <div id="c31" ng-class="getSlotClass('c31')"></div>
             </div>
-            <div class="flexColumn">
-                <button ng-click="dropChip('c4')" ng-class="getBtnClass('c4')">drop</button>
+            <div class="flexColumn" ng-click="dropChip('c4')">
                 <div id="c46" ng-class="getSlotClass('c46')"></div>
                 <div id="c45" ng-class="getSlotClass('c45')"></div>
                 <div id="c44" ng-class="getSlotClass('c44')"></div>
@@ -61,8 +57,7 @@
                 <div id="c42" ng-class="getSlotClass('c42')"></div>
                 <div id="c41" ng-class="getSlotClass('c41')"></div>
             </div>
-            <div class="flexColumn">
-                <button ng-click="dropChip('c5')" ng-class="getBtnClass('c5')">drop</button>
+            <div class="flexColumn" ng-click="dropChip('c5')">
                 <div id="c56" ng-class="getSlotClass('c56')"></div>
                 <div id="c55" ng-class="getSlotClass('c55')"></div>
                 <div id="c54" ng-class="getSlotClass('c54')"></div>
@@ -70,8 +65,7 @@
                 <div id="c52" ng-class="getSlotClass('c52')"></div>
                 <div id="c51" ng-class="getSlotClass('c51')"></div>
             </div>
-            <div class="flexColumn">
-                <button ng-click="dropChip('c6')" ng-class="getBtnClass('c6')">drop</button>
+            <div class="flexColumn" ng-click="dropChip('c6')">
                 <div id="c66" ng-class="getSlotClass('c66')"></div>
                 <div id="c65" ng-class="getSlotClass('c65')"></div>
                 <div id="c64" ng-class="getSlotClass('c64')"></div>
@@ -79,8 +73,7 @@
                 <div id="c62" ng-class="getSlotClass('c62')"></div>
                 <div id="c61" ng-class="getSlotClass('c61')"></div>
             </div>
-            <div class="flexColumn">
-                <button ng-click="dropChip('c7')" ng-class="getBtnClass('c7')">drop</button>
+            <div class="flexColumn" ng-click="dropChip('c7')">
                 <div id="c76" ng-class="getSlotClass('c76')"></div>
                 <div id="c75" ng-class="getSlotClass('c75')"></div>
                 <div id="c74" ng-class="getSlotClass('c74')"></div>
@@ -91,7 +84,7 @@
         </div>
 
         <!-- modal code below -->
-        <modal-dialog show='modalShown' width='50%' height='70%'>
+        <modal-dialog show='modalShown' >
             <div class="flexContainer">
                 <h1>Connect Four Game Rules</h1>
             </div>
@@ -101,17 +94,16 @@
             </div>
             <div>
                 <h3>How to Play:</h3>
-                <p>
+                <div>
                     <ol>
                         <li>Decide who plays first. Players will alternate turns after playing a checker.</li>
                         <li>On your turn, drop one of your checkers down ANY of the slots in the grid by clicking on the grid.</li>
                         <li>Play alternates until one player gets 4 checkers of his/her color in a row. The 4-in-a-row can be horizontal, vertical or diagonal.</li>
                         <li>If you're the first player to get four of the checkers in a row, you win the game.</li>
-
                     </ol>
-                </p>
-            </div>
+                </div>
 
+            </div>
         </modal-dialog>
 
         <!-- add scripts -->
