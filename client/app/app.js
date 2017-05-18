@@ -40,20 +40,20 @@ const controllerFunc = function($scope) {
   };
 
   /* user plays chips so display it on the board */
-  $scope.dropChip = (btn) => {
+  $scope.dropChip = (pos) => {
     $scope.game.numMoves++; // increment number of moves made
 
     /* exception: user tries to play in column that is full */
-    if ($scope.game.nextSlot[btn] === 7) {
-      $scope.game.animate[btn] = true; // shake column
+    if ($scope.game.nextSlot[pos] === 7) {
+      $scope.game.animate[pos] = true; // shake column
       $scope.playBuzzer(); // play buzzer sound to let user know that can't play here
     } else {
-      $scope.game.board[btn+$scope.game.nextSlot[btn]] = ($scope.player1) ? 1 : 2; // set which player chip is in this spot
-      $scope.game.nextSlot[btn] = ($scope.game.nextSlot[btn] + 1); // set next available slot in this column
+      $scope.game.board[pos+$scope.game.nextSlot[pos]] = ($scope.player1) ? 1 : 2; // set which player chip is in this spot
+      $scope.game.nextSlot[pos] = ($scope.game.nextSlot[pos] + 1); // set next available slot in this column
 
       /* after play check if we have a winner but only start after the 7th move */
-      if ($scope.game.numMoves > 7 ) {
-        $scope.checkWinner(btn, $scope.player1);
+      if ($scope.game.numMoves >= 7 ) {
+        $scope.checkWinner(pos);
       }
     }
 
@@ -88,8 +88,8 @@ const controllerFunc = function($scope) {
   };
 
   /* checks to see if play made by user results in a winning move */
-  $scope.checkWinner = (pos, player) => {
-    if ( $scope.checkHorizontal(pos, player) || $scope.checkVertical(pos, player) || $scope.checkDiagonal(pos, player) ) {
+  $scope.checkWinner = (pos) => {
+    if ( $scope.checkHorizontal(pos) || $scope.checkVertical(pos) || $scope.checkDiagonal(pos) ) {
       $scope.game.winner = ($scope.player1) ? 1 : 2;
       return true;
     }
@@ -97,20 +97,123 @@ const controllerFunc = function($scope) {
   };
 
   /* checks horizontal for winning strategy */
-  $scope.checkHorizontal = (pos, player) => {
-    console.log('horizontal', pos, player);
+  $scope.checkHorizontal = (pos) => {
+    let numMatches = 1;
+    const playSpot = $scope.game.nextSlot[pos] - 1;
+    const playCol = Number(pos.substr(1));
+    const currentPlayer = ($scope.player1) ? 1 : 2;
+
+    /* check all slots to right of current played position */
+    for (let i = playCol + 1; i <= 7; i++) {
+      if ($scope.game.board["c"+i+playSpot]=== currentPlayer) {
+        numMatches++;
+      } else {
+        break;
+      }
+    }
+    /* check all slots to left of current played position */
+    for (let i = playCol - 1; i >= 1; i--) {
+      if ($scope.game.board["c"+i+playSpot] === currentPlayer) {
+        numMatches++;
+      }
+      else {
+        break;
+      }
+    }
+
+    /* check numMatches is at least 4 to see if we have a winner */
+    if (numMatches >= 4) {
+      return true;
+    }
+
     return false;
   };
 
   /* checks vertical for winning strategy */
-  $scope.checkVertical = (pos, player) => {
-    console.log('horizontal', pos, player);
+  $scope.checkVertical = (pos) => {
+    let numMatches = 1;
+    const playSpot = $scope.game.nextSlot[pos] - 1;
+    const currentPlayer = ($scope.player1) ? 1 : 2;
+
+    /* check all slots below current played position NOTE: no need to check above */
+    for (let i = playSpot - 1; i >= 1; i--) {
+      if ($scope.game.board[pos+playSpot] === currentPlayer) {
+        numMatches++;
+      }
+      else {
+        break;
+      }
+    }
+
+    /* check numMatches is at least 4 to see if we have a winner */
+    if (numMatches >= 4) {
+      return true;
+    }
+
     return false;
   };
 
   /* checks diagonal for winning strategy */
-  $scope.checkDiagonal = (pos, player) => {
-    console.log('horizontal', pos, player);
+  $scope.checkDiagonal = (pos) => {
+    let numMatches = 1;
+    const playSpot = $scope.game.nextSlot[pos] - 1;
+    const playCol = Number(pos.substr(1));
+    const currentPlayer = ($scope.player1) ? 1 : 2;
+    let testingCol = playCol;
+
+    /* check down and to right of current played position  */
+    for (let i = playSpot - 1; i >= 1; i++) {
+      testingCol++;
+      if ($scope.game.board["c" + (testingCol) + i] === currentPlayer) {
+        numMatches++;
+      } else {
+        break;
+      }
+    }
+    /* check up and left of current played position */
+    testingCol = playCol;
+    for (let i = playSpot + 1; i <= 6; i++) {
+      testingCol--;
+      if ($scope.game.board["c" + (testingCol) + i] === currentPlayer) {
+        numMatches++;
+      } else {
+        break;
+      }
+    }
+
+    /* check numMatches is at least 4 to see if we have a winner */
+    if (numMatches >= 4) {
+      return true;
+    }
+
+    /* There are 2 diagonals so now need to check the other diagonal */
+    /* check down and to left of current played position  */
+    testingCol = playCol;
+    numMatches = 1;
+    for (let i = playSpot - 1; i >= 1; i++) {
+      testingCol--;
+      if ($scope.game.board["c" + (testingCol) + playSpot] === currentPlayer) {
+        numMatches++;
+      } else {
+        break;
+      }
+    }
+    /* check up and right of current played position */
+    testingCol = playCol;
+    for (let i = playSpot + 1; i <= 6; i++) {
+      testingCol++;
+      if ($scope.game.board["c" + (testingCol) + i] === currentPlayer) {
+        numMatches++;
+      } else {
+        break;
+      }
+    }
+
+    /* check numMatches is at least 4 to see if we have a winner */
+    if (numMatches >= 4) {
+      return true;
+    }
+
     return false;
   };
 
