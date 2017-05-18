@@ -83,7 +83,7 @@
         </div>
 
         <!-- modal code below -->
-        <instructions-modal show='modalShown'>
+        <instructions-modal show='instructionsModalShown'>
             <div class="flexContainer">
                 <h1>Connect Four Game Rules</h1>
             </div>
@@ -105,16 +105,20 @@
             </div>
         </instructions-modal>
 
-        <results-modal show="modalShown">
+        <results-modal show="resultsModalShown">
             <div class="flexContainer">
-
+                <h1>Results Modal</h1>
             </div>
         </results-modal>
+
+        <!-- show footer component -->
+        <footer></footer>
 
         <!-- add scripts -->
         <script src="vendor/angular/angular.min.js"></script>
         <script src="vendor/angular-animate/angular-animate.js"></script>
         <script src="app/app.js"></script>
+        <script src="app/components/footer/footer.js"></script>
     </body>
 
 </html>

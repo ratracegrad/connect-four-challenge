@@ -4,7 +4,7 @@ const controllerFunc = function($scope) {
      ------------------*/
   $scope.player1 = true; // used to determine who is current player
   $scope.showGame = false; // show game board be shown
-  $scope.modalShown = false; // should modal be shown
+  $scope.instructionsModalShown = false; // should modal be shown
   $scope.game = {
     board: {
       'c11': 0, 'c12': 0, 'c13': 0, 'c14': 0, 'c15': 0, 'c16': 0,
@@ -31,7 +31,7 @@ const controllerFunc = function($scope) {
 
   /* displays modal when user clicks on instructions button */
   $scope.toggleInstructionsModal = () => {
-    $scope.modalShown = !$scope.modalShown;
+    $scope.instructionsModalShown = !$scope.instructionsModalShown;
   };
 
   /* starts game when user clicks on start game button */
