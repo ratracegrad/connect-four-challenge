@@ -25,7 +25,7 @@
         </div>
 
         <div id="gameBoard" class="flexContainer" ng-if="showGame">
-            <div class="flexColumn" ng-click="dropChip('c1')">
+            <div class="flexColumn" ng-class="getShakeClass('c1')" ng-click="dropChip('c1')">
                 <div id="c16" ng-class="getSlotClass('c16')"></div>
                 <div id="c15" ng-class="getSlotClass('c15')"></div>
                 <div id="c14" ng-class="getSlotClass('c14')"></div>
@@ -33,7 +33,7 @@
                 <div id="c12" ng-class="getSlotClass('c12')"></div>
                 <div id="c11" ng-class="getSlotClass('c11')"></div>
             </div>
-            <div class="flexColumn" ng-click="dropChip('c2')">
+            <div class="flexColumn" ng-class="getShakeClass('c2')" ng-click="dropChip('c2')">
                 <div id="c26" ng-class="getSlotClass('c26')"></div>
                 <div id="c25" ng-class="getSlotClass('c25')"></div>
                 <div id="c24" ng-class="getSlotClass('c24')"></div>
@@ -41,7 +41,7 @@
                 <div id="c22" ng-class="getSlotClass('c22')"></div>
                 <div id="c21" ng-class="getSlotClass('c21')"></div>
             </div>
-            <div class="flexColumn" ng-click="dropChip('c3')">
+            <div class="flexColumn" ng-class="getShakeClass('c3')" ng-click="dropChip('c3')">
                 <div id="c36" ng-class="getSlotClass('c36')"></div>
                 <div id="c35" ng-class="getSlotClass('c35')"></div>
                 <div id="c34" ng-class="getSlotClass('c34')"></div>
@@ -49,7 +49,7 @@
                 <div id="c32" ng-class="getSlotClass('c32')"></div>
                 <div id="c31" ng-class="getSlotClass('c31')"></div>
             </div>
-            <div class="flexColumn" ng-click="dropChip('c4')">
+            <div class="flexColumn" ng-class="getShakeClass('c4')" ng-click="dropChip('c4')">
                 <div id="c46" ng-class="getSlotClass('c46')"></div>
                 <div id="c45" ng-class="getSlotClass('c45')"></div>
                 <div id="c44" ng-class="getSlotClass('c44')"></div>
@@ -57,7 +57,7 @@
                 <div id="c42" ng-class="getSlotClass('c42')"></div>
                 <div id="c41" ng-class="getSlotClass('c41')"></div>
             </div>
-            <div class="flexColumn" ng-click="dropChip('c5')">
+            <div class="flexColumn" ng-class="getShakeClass('c5')" ng-click="dropChip('c5')">
                 <div id="c56" ng-class="getSlotClass('c56')"></div>
                 <div id="c55" ng-class="getSlotClass('c55')"></div>
                 <div id="c54" ng-class="getSlotClass('c54')"></div>
@@ -65,7 +65,7 @@
                 <div id="c52" ng-class="getSlotClass('c52')"></div>
                 <div id="c51" ng-class="getSlotClass('c51')"></div>
             </div>
-            <div class="flexColumn" ng-click="dropChip('c6')">
+            <div class="flexColumn" ng-class="getShakeClass('c6')" ng-click="dropChip('c6')">
                 <div id="c66" ng-class="getSlotClass('c66')"></div>
                 <div id="c65" ng-class="getSlotClass('c65')"></div>
                 <div id="c64" ng-class="getSlotClass('c64')"></div>
@@ -73,7 +73,7 @@
                 <div id="c62" ng-class="getSlotClass('c62')"></div>
                 <div id="c61" ng-class="getSlotClass('c61')"></div>
             </div>
-            <div class="flexColumn" ng-click="dropChip('c7')">
+            <div class="flexColumn" ng-class="getShakeClass('c7')" ng-click="dropChip('c7')">
                 <div id="c76" ng-class="getSlotClass('c76')"></div>
                 <div id="c75" ng-class="getSlotClass('c75')"></div>
                 <div id="c74" ng-class="getSlotClass('c74')"></div>
@@ -108,6 +108,7 @@
 
         <!-- add scripts -->
         <script src="vendor/angular/angular.min.js"></script>
+        <script src="vendor/angular-animate/angular-animate.js"></script>
         <script src="app/app.js"></script>
     </body>
 

@@ -17,7 +17,10 @@ const controllerFunc = function($scope) {
       c1: 1, c2: 1, c3: 1, c4: 1, c5: 1, c6: 1, c7: 1
     },
     numMoves: 0,
-    winner: null
+    winner: null,
+    animate: {
+      c1: false, c2: false, c3: false, c4: false, c5: false, c6: false, c7: false
+    }
   };
 
   /* controller functions  */
@@ -32,7 +35,8 @@ const controllerFunc = function($scope) {
   $scope.dropChip = (btn) => {
     $scope.game.numMoves++;
     if ($scope.game.nextSlot[btn] === 7) {
-      // TODO play sound
+      $scope.game.animate[btn] = true;
+      $scope.playBuzzer();
     } else {
       $scope.game.board[btn+$scope.game.nextSlot[btn]] = ($scope.player1) ? 1 : 2;
       $scope.game.nextSlot[btn] = ($scope.game.nextSlot[btn] + 1);
@@ -52,6 +56,24 @@ const controllerFunc = function($scope) {
     } else {
       return 'player2';
     }
+  };
+
+  $scope.getShakeClass = (pos) => {
+    if ($scope.game.animate[pos] === true) {
+      return 'shakeColumn';
+    }
+    return '';
+  };
+
+  $scope.playBuzzer = function() {
+    console.log('in playBuzzer');
+    var audio = new Audio('audio/buzzer.mp3');
+    audio.play();
+  };
+
+  $scope.shakeColumn = function(pos) {
+    console.log('shakeColumn')
+    $scope.game.animate[pos] = !$scope.game.animate[pos];
   };
 
   $scope.checkWinner = (btn, player) => {
@@ -106,6 +128,6 @@ const directiveFunc = function() {
   };
 };
 
-angular.module('app', [])
+angular.module('app', ['ngAnimate'])
   .controller('mainController', ['$scope', controllerFunc])
   .directive('modalDialog', directiveFunc);
