@@ -1,10 +1,11 @@
-const controllerFunc = function($scope) {
+const controllerFunc = ($scope) => {
   /* ------------------
        scope variables
      ------------------*/
   $scope.player1 = true; // used to determine who is current player
   $scope.showGame = false; // show game board be shown
-  $scope.instructionsModalShown = false; // should modal be shown
+  $scope.instructionsModalShown = false; // should instructions modal be shown
+  $scope.resultsModalShown = false;  // show results modal be shown
   $scope.game = {
     board: {
       'c11': 0, 'c12': 0, 'c13': 0, 'c14': 0, 'c15': 0, 'c16': 0,
@@ -52,8 +53,19 @@ const controllerFunc = function($scope) {
       $scope.game.nextSlot[pos] = ($scope.game.nextSlot[pos] + 1); // set next available slot in this column
 
       /* after play check if we have a winner but only start after the 7th move */
+      /* if have a winner then show modal to display winner */
       if ($scope.game.numMoves >= 7 ) {
-        $scope.checkWinner(pos);
+        if ($scope.checkWinner(pos)) {
+          $scope.game.winner = ($scope.player1) ? "Player 1" : "Player 2"; // set which player won the game
+          $scope.resultsModalShown = true;  // display winner
+          $scope.showGame = false; // hide the game board
+        }
+      }
+
+      /* exception: have tie game */
+      if ($scope.game.numMoves === 42 && ($scope.game.winner === null)) {
+        $scope.resultsModalShown = true; // show modal to say tie game
+        $scope.showGame = false; // hide the game board
       }
     }
 
@@ -71,19 +83,22 @@ const controllerFunc = function($scope) {
     return 'player2'; // show player 2 chip color
   };
 
+  $scope.getNumMoves = function() {
+    return ($scope.game.numMoves === 42);
+  }
   /* set class that will animate (shake) column if player tries to make invalid move */
   $scope.getShakeClass = (pos) => {
     return ($scope.game.animate[pos] === true) ? 'shakeColumn' : '';
   };
 
   /* play buzzer sound if player tries to make invalid move */
-  $scope.playBuzzer = function() {
+  $scope.playBuzzer = () => {
     const audio = new Audio('audio/buzzer.mp3');
     audio.play();
   };
 
   /* sets column to true which toggles class which shakes column for invalid move */
-  $scope.shakeColumn = function(pos) {
+  $scope.shakeColumn = (pos) => {
     $scope.game.animate[pos] = !$scope.game.animate[pos];
   };
 
@@ -95,11 +110,7 @@ const controllerFunc = function($scope) {
       currentPlayer: ($scope.player1) ? 1 : 2
     };
 
-    if ( $scope.checkHorizontal(pos, playDetail) || $scope.checkVertical(pos, playDetail) || $scope.checkDiagonal(pos, playDetail) ) {
-      $scope.game.winner = ($scope.player1) ? 1 : 2;
-      return true;
-    }
-    return false;
+    return ($scope.checkHorizontal(pos, playDetail) || $scope.checkVertical(pos, playDetail) || $scope.checkDiagonal(pos, playDetail) );
   };
 
   /* checks horizontal for winning strategy */
@@ -133,7 +144,7 @@ const controllerFunc = function($scope) {
 
     /* check all slots below current played position NOTE: no need to check above */
     for (let i = playDetail.playSpot - 1; i >= 1; i--) {
-      if ($scope.game.board[pos + playDetail.playSpot] === playDetail.currentPlayer) {
+      if ($scope.game.board[pos + i] === playDetail.currentPlayer) {
         numMatches++;
       } else {
         break;
@@ -203,7 +214,7 @@ const controllerFunc = function($scope) {
 
 
 };
-const instructionsDirectiveFunc = function() {
+const instructionsDirectiveFunc = () => {
   return {
     restrict: 'E',
     scope: {
@@ -211,13 +222,13 @@ const instructionsDirectiveFunc = function() {
     },
     replace: true, // Replace with the template below
     transclude: true, // we want to insert custom content inside the directive
-    link: function(scope, element, attrs) {
+    link: (scope, element, attrs) => {
       scope.dialogStyle = {};
       if (attrs.width)
         scope.dialogStyle.width = attrs.width;
       if (attrs.height)
         scope.dialogStyle.height = attrs.height;
-      scope.hideModal = function() {
+      scope.hideModal = () => {
         scope.show = false;
       };
     },
@@ -231,7 +242,7 @@ const instructionsDirectiveFunc = function() {
         </div>`
   };
 };
-const resultsDirectiveFunc = function() {
+const resultsDirectiveFunc = () => {
   return {
     restrict: 'E',
     scope: {
@@ -239,13 +250,13 @@ const resultsDirectiveFunc = function() {
     },
     replace: true, // Replace with the template below
     transclude: true, // we want to insert custom content inside the directive
-    link: function(scope, element, attrs) {
+    link: (scope, element, attrs) => {
       scope.dialogStyle = {};
       if (attrs.width)
         scope.dialogStyle.width = attrs.width;
       if (attrs.height)
         scope.dialogStyle.height = attrs.height;
-      scope.hideModal = function() {
+      scope.hideModal = () => {
         scope.show = false;
       };
     },

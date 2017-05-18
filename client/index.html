@@ -115,7 +115,8 @@
 
         <results-modal show="resultsModalShown">
             <div class="flexContainer">
-                <h1>Results Modal</h1>
+                <h1 ng-show="!getNumMoves()">Winner is {{ game.winner }}</h1>
+                <h1 ng-show="getNumMoves()">Tie Game!</h1>
             </div>
         </results-modal>
 
