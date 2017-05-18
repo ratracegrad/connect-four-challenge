@@ -2,25 +2,33 @@
   "name": "connect-four",
   "author": "Jennifer Bland <ratracegrad@gmail.com>",
   "version": "1.0.0",
-  "description": "single page appliation using Node.js and Angular",
+  "description": "Implementation of the connect four game using AngularJS, Node.js, Express.js, Flexbox and ng-Animate",
   "main": "server.js",
-  "keywords": [
-    "connect four",
-    "angularJS",
-    "mongoDB",
-    "mongoose",
-    "Jennifer Bland"
-  ],
-  "bugs": {
-    "url": "https://github.com/ratracegrad/connect-four-challenge/issues"
-  },
-  "homepage": "https://github.com/ratracegrad/connect-four-challenge#readme",
+  "license": "MIT",
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server",
     "postinstall": "bower install"
   },
-  "license": "MIT",
+  "keywords": [
+    "connect four",
+    "angularJS",
+    "nodejs",
+    "expressjs",
+    "flexbox",
+    "mongoDB",
+    "mongoose",
+    "Jennifer Bland"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ratracegrad/connect-four-challenge.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ratracegrad/connect-four-challenge/issues"
+  },
+  "homepage": "https://github.com/ratracegrad/connect-four-challenge#readme",
   "dependencies": {
     "body-parser": "^1.17.1",
     "bower": "^1.8.0",
