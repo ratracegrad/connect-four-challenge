@@ -5,7 +5,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="Connect Four game created by Jennifer Bland">
         <title>Connect Four | Jennifer Bland</title>
+        <link rel="shortcut icon" href="app/assets/images/favicon.ico" type="image/x-icon">
+
+        <!-- use foot from Google Fonts-->
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+        <!-- stylesheets below - Added normalize to do a reset before my stylesheet -->
         <link rel="stylesheet" href="vendor/normalize-css/normalize.css">
         <link rel="stylesheet" href="app/app.css">
     </head>
@@ -17,12 +22,15 @@
             </div>
         </div>
         <div class="flexContainer">
+
+            <!-- Buttons to start game and show instructions-->
             <div>
                 <button ng-click='startGame()' ng-show="!showGame" class="gameButton">Start Game</button>
                 <button ng-click='toggleInstructionsModal()' class="gameButton">Instructions</button>
             </div>
         </div>
 
+        <!-- game board shown below -->
         <div id="gameBoard" class="flexContainer" ng-if="showGame">
             <div class="flexColumn" ng-class="getShakeClass('c1')" ng-click="dropChip('c1')">
                 <div id="c16" ng-class="getSlotClass('c16')"></div>
@@ -111,7 +119,7 @@
             </div>
         </results-modal>
 
-        <!-- show footer component -->
+        <!-- footer component -->
         <footer></footer>
 
         <!-- add scripts -->
