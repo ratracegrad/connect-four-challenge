@@ -29,6 +29,7 @@
   ],
   "dependencies": {
     "angular": "^1.6.4",
-    "angular-animate": "^1.6.4"
+    "angular-animate": "^1.6.4",
+    "normalize-css": "^7.0.0"
   }
 }
