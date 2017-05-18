@@ -124,11 +124,7 @@ const controllerFunc = function($scope) {
     }
 
     /* check numMatches is at least 4 to see if we have a winner */
-    if (numMatches >= 4) {
-      return true;
-    }
-
-    return false;
+    return (numMatches >= 4);
   };
 
   /* checks vertical for winning strategy */
@@ -145,11 +141,7 @@ const controllerFunc = function($scope) {
     }
 
     /* check numMatches is at least 4 to see if we have a winner */
-    if (numMatches >= 4) {
-      return true;
-    }
-
-    return false;
+    return (numMatches >= 4);
   };
 
   /* checks diagonal for winning strategy */
@@ -206,11 +198,7 @@ const controllerFunc = function($scope) {
     }
 
     /* check numMatches is at least 4 to see if we have a winner */
-    if (numMatches >= 4) {
-      return true;
-    }
-
-    return false;
+    return (numMatches >= 4);
   };
 
 
