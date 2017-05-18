@@ -1,4 +1,4 @@
-const controllerFunc = ($scope) => {
+const controllerFunc = ($scope, $timeout) => {
   /* ------------------
        scope variables
      ------------------*/
@@ -99,7 +99,8 @@ const controllerFunc = ($scope) => {
     /* alternate between the two players */
     $scope.player1 = !$scope.player1;
     if ($scope.playComputer && !$scope.player1) {
-      $scope.computerMove();
+      /* this is for pure aesthetics to mimic waiting before playing */
+      $timeout($scope.computerMove, 1000);
     }
   };
 
@@ -318,6 +319,6 @@ const resultsDirectiveFunc = () => {
 };
 
 angular.module('app', ['ngAnimate'])
-  .controller('mainController', ['$scope', controllerFunc])
+  .controller('mainController', ['$scope', '$timeout', controllerFunc])
   .directive('instructionsModal', instructionsDirectiveFunc)
   .directive('resultsModal', resultsDirectiveFunc);
