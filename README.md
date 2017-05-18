@@ -4,6 +4,12 @@ This is a full-stack web implementation of the classic game "Connect Four". The 
 
 It follows MVC architecture and uses the perfect app structure to enhance productivity.
 
+### Screenshot
+![Connect Four Screnshot](/screenshots/connectfour.png?raw=true "Connect Four by Jennifer Bland")
+
+### Live Preview
+You can view the game in action [online here](https://salesloft-hireme.herokuapp.com).
+
 ### Prerequisites
 
 You must have [Git](http://git-scm.com/) and node.js and its package manager [npm](http://nodejs.org/) installed.
