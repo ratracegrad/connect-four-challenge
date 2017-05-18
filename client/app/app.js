@@ -3,7 +3,6 @@ const controllerFunc = ($scope) => {
        scope variables
      ------------------*/
   $scope.player1 = true; // used to determine who is current player
-  $scope.showGame = false; // show game board be shown
   $scope.instructionsModalShown = false; // should instructions modal be shown
   $scope.resultsModalShown = false;  // show results modal be shown
   $scope.game = {
@@ -37,7 +36,26 @@ const controllerFunc = ($scope) => {
 
   /* starts game when user clicks on start game button */
   $scope.startGame = () => {
-    $scope.showGame = !$scope.showGame;
+    $scope.player1 = true;
+    $scope.game = {
+      board: {
+        'c11': 0, 'c12': 0, 'c13': 0, 'c14': 0, 'c15': 0, 'c16': 0,
+        'c21': 0, 'c22': 0, 'c23': 0, 'c24': 0, 'c25': 0, 'c26': 0,
+        'c31': 0, 'c32': 0, 'c33': 0, 'c34': 0, 'c35': 0, 'c36': 0,
+        'c41': 0, 'c42': 0, 'c43': 0, 'c44': 0, 'c45': 0, 'c46': 0,
+        'c51': 0, 'c52': 0, 'c53': 0, 'c54': 0, 'c55': 0, 'c56': 0,
+        'c61': 0, 'c62': 0, 'c63': 0, 'c64': 0, 'c65': 0, 'c66': 0,
+        'c71': 0, 'c72': 0, 'c73': 0, 'c74': 0, 'c75': 0, 'c76': 0
+      },
+      nextSlot: {
+        c1: 1, c2: 1, c3: 1, c4: 1, c5: 1, c6: 1, c7: 1
+      },
+      numMoves: 0,
+      winner: null,
+      animate: {
+        c1: false, c2: false, c3: false, c4: false, c5: false, c6: false, c7: false
+      }
+    }
   };
 
   /* user plays chips so display it on the board */
@@ -85,7 +103,8 @@ const controllerFunc = ($scope) => {
 
   $scope.getNumMoves = function() {
     return ($scope.game.numMoves === 42);
-  }
+  };
+
   /* set class that will animate (shake) column if player tries to make invalid move */
   $scope.getShakeClass = (pos) => {
     return ($scope.game.animate[pos] === true) ? 'shakeColumn' : '';
@@ -161,7 +180,7 @@ const controllerFunc = ($scope) => {
     let testingCol = playDetail.playCol;
 
     /* check down and to right of current played position  */
-    for (let i = playDetail.playSpot - 1; i >= 1; i++) {
+    for (let i = playDetail.playSpot - 1; i >= 1; i--) {
       testingCol++;
       if ($scope.game.board["c" + testingCol + i] === playDetail.currentPlayer) {
         numMatches++;
@@ -169,6 +188,7 @@ const controllerFunc = ($scope) => {
         break;
       }
     }
+
     /* check up and left of current played position */
     testingCol = playDetail.playCol;
     for (let i = playDetail.playSpot + 1; i <= 6; i++) {
@@ -189,14 +209,15 @@ const controllerFunc = ($scope) => {
     /* check down and to left of current played position  */
     testingCol = playDetail.playCol;
     numMatches = 1;
-    for (let i = playDetail.playSpot - 1; i >= 1; i++) {
+    for (let i = playDetail.playSpot - 1; i >= 1; i--) {
       testingCol--;
-      if ($scope.game.board["c" + testingCol + playDetail.playSpot] === playDetail.currentPlayer) {
+      if ($scope.game.board["c" + testingCol + i] === playDetail.currentPlayer) {
         numMatches++;
       } else {
         break;
       }
     }
+
     /* check up and right of current played position */
     testingCol = playDetail.playCol;
     for (let i = playDetail.playSpot + 1; i <= 6; i++) {
