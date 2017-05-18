@@ -89,7 +89,13 @@ const controllerFunc = function($scope) {
 
   /* checks to see if play made by user results in a winning move */
   $scope.checkWinner = (pos) => {
-    if ( $scope.checkHorizontal(pos) || $scope.checkVertical(pos) || $scope.checkDiagonal(pos) ) {
+    const playDetail = {
+      playSpot: $scope.game.nextSlot[pos] - 1,
+      playCol: Number(pos.substr(1)),
+      currentPlayer: ($scope.player1) ? 1 : 2
+    };
+
+    if ( $scope.checkHorizontal(pos, playDetail) || $scope.checkVertical(pos, playDetail) || $scope.checkDiagonal(pos, playDetail) ) {
       $scope.game.winner = ($scope.player1) ? 1 : 2;
       return true;
     }
@@ -97,26 +103,22 @@ const controllerFunc = function($scope) {
   };
 
   /* checks horizontal for winning strategy */
-  $scope.checkHorizontal = (pos) => {
+  $scope.checkHorizontal = (pos, playDetail) => {
     let numMatches = 1;
-    const playSpot = $scope.game.nextSlot[pos] - 1;
-    const playCol = Number(pos.substr(1));
-    const currentPlayer = ($scope.player1) ? 1 : 2;
 
     /* check all slots to right of current played position */
-    for (let i = playCol + 1; i <= 7; i++) {
-      if ($scope.game.board["c"+i+playSpot]=== currentPlayer) {
+    for (let i = playDetail.playCol + 1; i <= 7; i++) {
+      if ($scope.game.board["c" + i + playDetail.playSpot] === playDetail.currentPlayer) {
         numMatches++;
       } else {
         break;
       }
     }
     /* check all slots to left of current played position */
-    for (let i = playCol - 1; i >= 1; i--) {
-      if ($scope.game.board["c"+i+playSpot] === currentPlayer) {
+    for (let i = playDetail.playCol - 1; i >= 1; i--) {
+      if ($scope.game.board["c" + i + playDetail.playSpot] === playDetail.currentPlayer) {
         numMatches++;
-      }
-      else {
+      } else {
         break;
       }
     }
@@ -130,17 +132,14 @@ const controllerFunc = function($scope) {
   };
 
   /* checks vertical for winning strategy */
-  $scope.checkVertical = (pos) => {
+  $scope.checkVertical = (pos, playDetail) => {
     let numMatches = 1;
-    const playSpot = $scope.game.nextSlot[pos] - 1;
-    const currentPlayer = ($scope.player1) ? 1 : 2;
 
     /* check all slots below current played position NOTE: no need to check above */
-    for (let i = playSpot - 1; i >= 1; i--) {
-      if ($scope.game.board[pos+playSpot] === currentPlayer) {
+    for (let i = playDetail.playSpot - 1; i >= 1; i--) {
+      if ($scope.game.board[pos + playDetail.playSpot] === playDetail.currentPlayer) {
         numMatches++;
-      }
-      else {
+      } else {
         break;
       }
     }
@@ -154,27 +153,24 @@ const controllerFunc = function($scope) {
   };
 
   /* checks diagonal for winning strategy */
-  $scope.checkDiagonal = (pos) => {
+  $scope.checkDiagonal = (pos, playDetail) => {
     let numMatches = 1;
-    const playSpot = $scope.game.nextSlot[pos] - 1;
-    const playCol = Number(pos.substr(1));
-    const currentPlayer = ($scope.player1) ? 1 : 2;
-    let testingCol = playCol;
+    let testingCol = playDetail.playCol;
 
     /* check down and to right of current played position  */
-    for (let i = playSpot - 1; i >= 1; i++) {
+    for (let i = playDetail.playSpot - 1; i >= 1; i++) {
       testingCol++;
-      if ($scope.game.board["c" + (testingCol) + i] === currentPlayer) {
+      if ($scope.game.board["c" + testingCol + i] === playDetail.currentPlayer) {
         numMatches++;
       } else {
         break;
       }
     }
     /* check up and left of current played position */
-    testingCol = playCol;
-    for (let i = playSpot + 1; i <= 6; i++) {
+    testingCol = playDetail.playCol;
+    for (let i = playDetail.playSpot + 1; i <= 6; i++) {
       testingCol--;
-      if ($scope.game.board["c" + (testingCol) + i] === currentPlayer) {
+      if ($scope.game.board["c" + testingCol + i] === playDetail.currentPlayer) {
         numMatches++;
       } else {
         break;
@@ -188,21 +184,21 @@ const controllerFunc = function($scope) {
 
     /* There are 2 diagonals so now need to check the other diagonal */
     /* check down and to left of current played position  */
-    testingCol = playCol;
+    testingCol = playDetail.playCol;
     numMatches = 1;
-    for (let i = playSpot - 1; i >= 1; i++) {
+    for (let i = playDetail.playSpot - 1; i >= 1; i++) {
       testingCol--;
-      if ($scope.game.board["c" + (testingCol) + playSpot] === currentPlayer) {
+      if ($scope.game.board["c" + testingCol + playDetail.playSpot] === playDetail.currentPlayer) {
         numMatches++;
       } else {
         break;
       }
     }
     /* check up and right of current played position */
-    testingCol = playCol;
-    for (let i = playSpot + 1; i <= 6; i++) {
+    testingCol = playDetail.playCol;
+    for (let i = playDetail.playSpot + 1; i <= 6; i++) {
       testingCol++;
-      if ($scope.game.board["c" + (testingCol) + i] === currentPlayer) {
+      if ($scope.game.board["c" + testingCol + i] === playDetail.currentPlayer) {
         numMatches++;
       } else {
         break;
