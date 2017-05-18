@@ -1,6 +1,6 @@
 {
-  "name": "spa-angular",
-  "description": "single page appliation using Node.js and Angular",
+  "name": "connect-four",
+  "description": "Implementation of the connect four game using AngularJS, Node.js, Express.js, Flexbox and ng-Animate",
   "main": "server.js",
   "authors": [
     "Jennifer Bland <ratracegrad@gmail.com>"
@@ -10,21 +10,24 @@
     "connect",
     "four",
     "angularJS",
+    "expressjs",
+    "nodejs",
+    "flexbox",
+    "ngAnimate",
     "mongoDB",
     "mongoose",
     "Jennifer",
     "Bland"
   ],
-  "homepage": "",
+  "homepage": "https://github.com/ratracegrad/connect-four-challenge#readme",
   "ignore": [
     "**/.*",
     "node_modules",
-    "bower_components",
+    "client/vendor",
     "test",
     "tests"
   ],
   "dependencies": {
-    "bootstrap": "^3.3.7",
     "angular": "^1.6.4",
     "angular-animate": "^1.6.4"
   }
